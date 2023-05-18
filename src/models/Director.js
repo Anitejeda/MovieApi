@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
+const moment = require('moment')
 
 const Director = sequelize.define('director', {
     
