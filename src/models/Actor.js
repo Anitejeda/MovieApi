@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
+const moment = require('moment')
 
 const Actor = sequelize.define('actor', {  
     fisrtName: {
@@ -19,8 +20,11 @@ const Actor = sequelize.define('actor', {
         allowNull: false
     },
     birthday: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.DATEONLY,
+        allowNull: false,   
+        get: function() {
+            return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
+        }
     },
 });
 
