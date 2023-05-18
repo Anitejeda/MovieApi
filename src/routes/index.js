@@ -7,9 +7,9 @@ const router = express.Router();
 
 // colocar las rutas aquí
 router.use('/genres', genreRouter);
-router.use('/director', directorRouter);
-router.use('/actor', actorRouter);
-router.use('/movie', movieRouter);
+router.use('/directors', directorRouter);
+router.use('/actors', actorRouter);
+router.use('/movies', movieRouter);
 
 
 module.exports = router;
