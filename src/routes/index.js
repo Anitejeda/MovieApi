@@ -1,6 +1,5 @@
 const express = require('express');
 const genreRouter = require('./genre.router');
-const Director = require('../models/Director');
 const directorRouter = require('./director.router');
 const actorRouter = require('./actor.router');
 const movieRouter = require('./movie.router');
