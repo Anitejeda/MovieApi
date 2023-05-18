@@ -26,8 +26,11 @@ const Director = sequelize.define('director', {
         allowNull: false
     },
     birthday: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.DATEONLY,
+        allowNull: false,   
+        get: function() {
+            return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
+        }
     },
 });
 
