@@ -2,14 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 const moment = require('moment')
 
-const Director = sequelize.define('director', {
-    
-    id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    },
+const Director = sequelize.define('director', { 
     fisrtName: {
         type: DataTypes.STRING,
         allowNull: false
