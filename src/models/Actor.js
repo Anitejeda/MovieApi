@@ -3,7 +3,7 @@ const sequelize = require('../utils/connection');
 const moment = require('moment')
 
 const Actor = sequelize.define('actor', {  
-    fisrtName: {
+    firstName: {
         type: DataTypes.STRING,
         allowNull: false
     },

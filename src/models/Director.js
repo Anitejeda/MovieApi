@@ -3,7 +3,7 @@ const sequelize = require('../utils/connection');
 const moment = require('moment')
 
 const Director = sequelize.define('director', { 
-    fisrtName: {
+    firstName: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -11,7 +11,7 @@ const Director = sequelize.define('director', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    nationalitiy: {
+    nationality: {
         type: DataTypes.STRING,
         allowNull: false
     },
