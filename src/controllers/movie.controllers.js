@@ -12,10 +12,23 @@ const create = catchError(async(req, res) => {
 });
 
 const getOne = catchError(async(req, res) => {
-    const { id } = req.params;
-    const result = await Movie.findByPk(id); 
-    if(!result) return res.sendStatus(404);
-    return res.json(result);
+    const { movieId } = req.params;
+
+    try {
+        const movie = await Movie.findOne({
+            where: { id: movieId },
+            include: ['genres', 'actors', 'directors'],
+        });
+
+        if (!movie) {
+            return res.status(404).json({ message: 'Movie not found' });
+        }
+
+        res.json(movie);
+    } catch (error) {
+        console.log('Error:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 const remove = catchError(async(req, res) => {
