@@ -26,6 +26,9 @@ const Director = sequelize.define('director', {
             return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
         }
     },
+},
+{
+  freezeTableName: true,
 });
 
 module.exports = Director;

@@ -18,6 +18,9 @@ const Movie = sequelize.define('movie', {
         type: DataTypes.INTEGER,
         allowNull: false
     }, 
+},
+{
+  freezeTableName: true,
 });
 
 

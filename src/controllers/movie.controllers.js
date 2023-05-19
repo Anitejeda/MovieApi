@@ -1,5 +1,8 @@
 const catchError = require('../utils/catchError');
 const Movie = require('../models/Movie');
+const Actor = require("./../models/Actor");
+const Director = require("./../models/Director");
+const Genre = require("./../models/Genre");
 
 const getAll = catchError(async(req, res) => {
     const results = await Movie.findAll();
@@ -12,12 +15,23 @@ const create = catchError(async(req, res) => {
 });
 
 const getOne = catchError(async(req, res) => {
-    const { movieId } = req.params;
-
+    const { id } = req.params;
     try {
-        const movie = await Movie.findOne({
-            where: { id: movieId },
-            include: ['genres', 'actors', 'directors'],
+        const movie = await Movie.findByPk(id, {
+            include: [
+            {
+                model: Genre,
+                attributes: ['name'],
+            },
+            {
+                model: Actor,
+                attributes: ['firstName', 'lastName', 'nationality', 'image', 'birthday'],
+            },
+            {
+                model: Director,
+                attributes: ['firstName', 'lastName', 'nationality', 'image', 'birthday'],
+            },
+            ],
         });
 
         if (!movie) {
@@ -50,24 +64,21 @@ const update = catchError(async(req, res) => {
 const getActors = catchError(async (req,res) => {
     const { id } = req.params;
     const movie = await Movie.findByPk(id); // Retrieve the movie instance
-    const actors = await movie.getActors();
-    console.log(actors)
+    const actors = await movie.getActors(); 
     return res.json(actors) 
 })
 
 const getGenres = catchError(async (req,res) => {
     const { id } = req.params;
     const movie = await Movie.findByPk(id); // Retrieve the movie instance
-    const genres = await movie.getGenres();
-    console.log(genres)
+    const genres = await movie.getGenres(); 
     return res.json(genres) 
 })
 
 const getDirectors = catchError(async (req,res) => {
     const { id } = req.params;
     const movie = await Movie.findByPk(id); // Retrieve the movie instance
-    const directors = await movie.getDirectors();
-    console.log(directors)
+    const directors = await movie.getDirectors(); 
     return res.json(directors) 
 })
 

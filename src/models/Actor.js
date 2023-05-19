@@ -26,6 +26,9 @@ const Actor = sequelize.define('actor', {
             return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
         }
     },
+},
+{
+  freezeTableName: true,
 });
 
 module.exports = Actor;
