@@ -20,7 +20,5 @@ Genre.belongsToMany(Movie, { through: 'MovieGenres' });
     console.log('Tablas sincronizadas correctamente');
   } catch (error) {
     console.error('Error al sincronizar las tablas:', error);
-  } finally {
-    sequelize.close(); 
-  }
+  } 
 })();
