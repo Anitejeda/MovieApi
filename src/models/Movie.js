@@ -19,15 +19,15 @@ const Movie = sequelize.define('movie', {
         allowNull: false
     },
     genres: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
         allowNull: false
     },
     actors: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
         allowNull: false
     },
     directors: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
         allowNull: false
     }
 });
