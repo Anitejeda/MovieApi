@@ -17,19 +17,7 @@ const Movie = sequelize.define('movie', {
     releaseYear: {
         type: DataTypes.INTEGER,
         allowNull: false
-    },
-    genres: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: false
-    },
-    actors: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: false
-    },
-    directors: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: false
-    }
+    }, 
 });
 
 

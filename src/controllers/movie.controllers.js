@@ -72,5 +72,5 @@ module.exports = {
     update,
     movieGenres,
     movieActors,
-    movieDirectors
+    movieDirectors,
 }

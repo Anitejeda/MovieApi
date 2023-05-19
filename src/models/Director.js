@@ -20,7 +20,7 @@ const Director = sequelize.define('director', {
         allowNull: false
     },
     birthday: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: false,   
         get: function() {
             return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');

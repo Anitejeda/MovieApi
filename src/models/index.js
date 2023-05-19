@@ -4,21 +4,19 @@ const Director = require("./Director");
 const Genre = require("./Genre");
 const Movie = require("./Movie");
 
+// Establecer relaciones
+Movie.belongsToMany(Actor, { through: 'MovieActor' });
+Actor.belongsToMany(Movie, { through: 'MovieActor' });
 
-Movie.belongsToMany(Actor, { through: 'MovieActors' });
-Actor.belongsToMany(Movie, { through: 'MovieActors' });
+Movie.belongsToMany(Director, { through: 'MovieDirector' });
+Director.belongsToMany(Movie, { through: 'MovieDirector' });
 
-Movie.belongsToMany(Director, { through: 'MovieDirectors' });
-Director.belongsToMany(Movie, { through: 'MovieDirectors' });
+Movie.belongsToMany(Genre, { through: 'MovieGenre' });
+Genre.belongsToMany(Movie, { through: 'MovieGenre' });
 
-Movie.belongsToMany(Genre, { through: 'MovieGenres' });
-Genre.belongsToMany(Movie, { through: 'MovieGenres' });
- 
-(async () => {
-  try {
-    await sequelize.sync({ force: true });
-    console.log('Tablas sincronizadas correctamente');
-  } catch (error) {
-    console.error('Error al sincronizar las tablas:', error);
-  } 
-})();
+// Sincronizar los modelos con la base de datos
+sequelize.sync({ force: true }).then(() => {
+  console.log('Modelos sincronizados con la base de datos');
+}).catch((error) => {
+  console.log('Error al sincronizar los modelos:', error);
+});
